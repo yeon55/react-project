@@ -2,20 +2,55 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  const [enteredTitle, setEnteredTitled] = useState('');
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
+//   const [enteredTitle, setEnteredTitled] = useState('');
+//   const [enteredAmount, setEnteredAmount] = useState('');
+//   const [enteredDate, setEnteredDate] = useState('');
+  const [userInput, setUserInput] = useState({
+      enteredTitle: '',
+      enteredAmount: '',
+      enteredDate: ''
+  });
 
   const titleChangeHandler = (e) => {
-    setEnteredTitled(e.target.value)
+    // 첫번째 방법  
+    // setEnteredTitled(e.target.value); 
+
+    // 두번째 방법
+    // setUserInput({
+    //     ...userInput,
+    //     enteredTitle: e.target.value,
+    // });
+
+    // 세번째 방법
+    setUserInput((prevState) => {
+        return {...prevState, enteredTitle: e.target.value};
+    });
   };
 
   const amountChangeHandler = (e) => {
-    setEnteredAmount(e.target.value)
+    // setEnteredAmount(e.target.value);
+
+    // setUserInput({
+    //     ...userInput,
+    //     enteredAmount: e.amount.value,
+    // });
+
+    setUserInput((prevState) => {
+        return {...prevState, enteredAmount: e.target.value};
+    });
   };
 
   const dateChangeHandler = (e) =>{
-    setEnteredDate(e.value.target)
+    // setEnteredDate(e.value.target);
+
+    // setUserInput({
+    //     ...userInput,
+    //     enteredDate: e.date.value,
+    // });
+
+    setUserInput((prevState) => {
+        return {...prevState, enteredDate: e.target.value};
+    });
   };
 
 
